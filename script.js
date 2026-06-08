@@ -51,3 +51,19 @@
         return listItem;
     }
 
+     let addTask = function () {
+    
+            let listItem = createNewTaskElement(taskInput.value);
+    
+            if (taskInput.value === "") {
+                return;
+            }
+    
+            // Append listItem to incompleteTaskHolder
+            incompleteTaskHolder.appendChild(listItem);
+            bindTaskEvents(listItem, taskCompleted);
+    
+            taskInput.value = "";
+    
+        }
+

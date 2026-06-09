@@ -66,4 +66,17 @@
             taskInput.value = "";
     
         }
-
+        let editTask = function () {
+                let listItem = this.parentNode;
+        
+                let editInput = listItem.querySelector('input[type=text]');
+                let label = listItem.querySelector("label");
+                let containsClass = listItem.classList.contains("editMode");
+                // If class of the parent is .editmode
+                if (containsClass) {
+                    label.innerText = editInput.value;
+                } else {
+                    editInput.value = label.innerText;
+                }
+                listItem.classList.toggle("editMode");
+            }

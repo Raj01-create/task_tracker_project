@@ -89,3 +89,53 @@
                     ul.removeChild(listItem);
             
                 }
+
+            
+    let taskCompleted = function () {
+
+        // Append the task list item to the #completed-tasks
+        let listItem = this.parentNode;
+        completedTasksHolder.appendChild(listItem);
+        bindTaskEvents(listItem, taskIncomplete);
+
+    }
+
+
+    let taskIncomplete = function () {
+        // Mark task as incomplete.
+        // When the checkbox is unchecked
+        // Append the task list item to the #incomplete-tasks.
+        let listItem = this.parentNode;
+        incompleteTaskHolder.appendChild(listItem);
+        bindTaskEvents(listItem, taskCompleted);
+
+    }
+
+
+    let bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
+
+        // select taskListItem's children
+        let checkBox = taskListItem.querySelector("input[type=checkbox]");
+        let editButton = taskListItem.querySelector("button.edit");
+        let deleteButton = taskListItem.querySelector("button.delete");
+
+        // bind editTask to edit button
+        editButton.onclick = editTask;
+        // bind deleteTask to delete button
+        deleteButton.onclick = deleteTask;
+        // bind checkBoxEventHandler to checkbox
+        checkBox.onchange = checkBoxEventHandler;
+    }
+
+    
+    // Set the click handler to the addTask function
+    addButton.addEventListener("click", addTask);
+    addButton.addEventListener("click", ajaxRequest);
+
+
+    // Cycle over incompleteTaskHolder ul list items
+    for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
+        // bind events to list item's children (taskCompleted)
+        bindTaskEvents(incompleteTaskHolder.children[i], taskCompleted);
+    }
+

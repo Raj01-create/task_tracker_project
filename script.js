@@ -139,3 +139,9 @@
         bindTaskEvents(incompleteTaskHolder.children[i], taskCompleted);
     }
 
+    // Cycle over completedTasksHolder ul list items
+        for (let i = 0; i < completedTasksHolder.children.length; i++) {
+            // bind events to list item's children (taskIncomplete)
+            bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
+        }
+    

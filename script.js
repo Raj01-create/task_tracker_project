@@ -80,3 +80,12 @@
                 }
                 listItem.classList.toggle("editMode");
             }
+
+            let deleteTask = function() {
+            
+                    let listItem = this.parentNode;
+                    let ul = listItem.parentNode;
+                    // Remove the parent list item from the ul.
+                    ul.removeChild(listItem);
+            
+                }
